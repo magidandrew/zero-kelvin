@@ -110,7 +110,7 @@ sudo chown $USER:$USER /etc/$PROJECT_NAME
 # Pull code from GitHub
 echo "Pulling code from GitHub..."
 cd /etc/$PROJECT_NAME
-git clone "git@github.com:$GITHUB_USERNAME/$PROJECT_NAME.git"
+git clone "git@github.com:$GITHUB_USERNAME/$PROJECT_NAME.git" .
 
 # Install NVM and Node.js
 echo "Installing NVM and Node.js..."
@@ -162,7 +162,11 @@ cat > ~/.config/containers/containers.conf << EOF
 cgroup_manager = "cgroupfs"
 EOF
 
+# Set default ssh login shell directory to the code repo
+echo "Setting default ssh login shell directory to the code repo..."
+echo "cd /etc/$PROJECT_NAME" >> ~/.bashrc
+echo "cd /etc/$PROJECT_NAME" >> ~/.zshrc
+
 # Print completion message
 echo "Setup complete! You are now ready to use Podman Compose on your Debian instance."
 echo "Don't forget to add your SSH key to your GitHub account if you haven't already."
-
