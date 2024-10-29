@@ -68,7 +68,7 @@ if [ $? -eq 0 ]; then
   sudo apt install fuse-overlayfs
   /usr/bin/fuse-overlayfs --version || die "fuse-overlayfs installation failed"
   sudo mkdir -p /etc/containers
-  sudo echo -e "[storage]\n driver = \"overlay\"\n\n [storage.options]\n mount_program = \"/usr/bin/fuse-overlayfs\"" > /etc/containers/storage.conf
+  sudo echo -e "[storage]\ndriver = \"overlay\"\n\n[storage.options]\nmount_program = \"/usr/bin/fuse-overlayfs\"" | sudo tee /etc/containers/storage.conf
   podman system reset
 fi
 
@@ -88,7 +88,7 @@ if [ -f ~/.zshrc ]; then
     # add zstyle ':omz:plugins:nvm' autoload true to ~/.zshrc
     # to make nvm work with oh-my-zsh
     sed -i '/source $ZSH\/oh-my-zsh.sh/a\  zstyle '\'':omz:plugins:nvm'\'' autoload true' ~/.zshrc
-    source ~/.zshrc
+    # don't need to source since running a bash program anyway
 fi
 
 # Generate SSH key
