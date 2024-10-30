@@ -10,10 +10,8 @@ usage() {
 }
 
 die() {
-  if [ $? -ne 0 ]; then
-    echo "An error occurred. Exiting..."
-    exit 1
-  fi
+  echo "$1"
+  exit 1
 }
 
 # Parse command line arguments
