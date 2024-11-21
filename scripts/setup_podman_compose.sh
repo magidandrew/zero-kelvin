@@ -56,7 +56,7 @@ pause
 
 # change shell to zsh
 echo "Changing shell to zsh..."
-chsh -s /bin/zsh
+sudo chsh -s /bin/zsh
 pause
 
 # Create and activate the virtual environment
